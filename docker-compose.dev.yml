@@ -4,5 +4,14 @@ services:
     image: vladimirovsk/smarthome:latest
     #build:
     #  context: .
+    command: ['npm', 'run', 'start']
     container_name: smarthome
-    restart: always
+    restart: no
+    ports:
+      - '8000:8000'
+    networks:
+      - bitcoders
+
+networks:
+  bitcoders:
+    driver: bridge
