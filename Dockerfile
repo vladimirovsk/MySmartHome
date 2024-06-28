@@ -1,5 +1,5 @@
 # Stage 1: Build stage
-FROM arm64v8/node:18 AS build
+FROM node:18 AS build
 
 WORKDIR /usr/src/app
 
