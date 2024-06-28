@@ -4,10 +4,16 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
+COPY tsconfig.json ./
+
 RUN npm install
+
+COPY . .
 
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
-CMD [ "npm", "start" ]
+RUN npm run build
+
+CMD [ "npm", "start:prod" ]
 
 EXPOSE 8000
