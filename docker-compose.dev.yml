@@ -4,7 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      platform: linux/arm64
     command: ['npm', 'run', 'start:prod']
     container_name: smarthome
     restart: no
