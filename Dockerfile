@@ -1,5 +1,5 @@
 # Stage 1: Build stage
-FROM arm64v8/node:18.9-alpine AS build
+FROM arm64v8/node:14-alpine AS build
 
 WORKDIR /usr/src/app
 
@@ -11,7 +11,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:18.9-alpine
+FROM node:14-alpine
 
 WORKDIR /usr/src/app
 
