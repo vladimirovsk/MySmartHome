@@ -1,8 +1,8 @@
 version: '3'
 services:
   smarthome:
-    #image: vladimirovsk/smarthome:latest
-    build:
-      context: .
+    image: vladimirovsk/smarthome:latest
+    #build:
+    #  context: .
     container_name: smarthome
     restart: always
