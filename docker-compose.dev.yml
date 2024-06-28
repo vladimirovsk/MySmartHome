@@ -1,0 +1,13 @@
+version: '3'
+services:
+  smart-home:
+    image: vladimirovsk/smarthome:latest
+    container_name: smarthome
+    restart: always
+    networks:
+      - dev
+
+
+networks:
+  eshyft:
+    driver: bridge
