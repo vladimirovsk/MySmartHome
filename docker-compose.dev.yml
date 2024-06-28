@@ -9,5 +9,5 @@ services:
 
 
 networks:
-  eshyft:
+  dev:
     driver: bridge
