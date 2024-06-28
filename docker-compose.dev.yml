@@ -4,7 +4,7 @@ services:
     image: vladimirovsk/smarthome:latest
     #build:
     #  context: .
-    command: ['npm', 'run', 'start']
+    command: ['npm', 'run', 'start:prod']
     container_name: smarthome
     restart: no
     ports:
