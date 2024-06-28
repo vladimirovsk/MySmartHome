@@ -1,4 +1,3 @@
-version: '3'
 services:
   smarthome:
     image: vladimirovsk/smarthome:latest
