@@ -1,19 +1,25 @@
-FROM node:18.16.0
+# Stage 1: Build stage
+FROM node:18-alpine AS build
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-COPY tsconfig.json ./
-
 RUN npm install
 
 COPY . .
 
-ENV NODE_OPTIONS=--openssl-legacy-provider
-
+# Сборка приложения
 RUN npm run build
 
-CMD [ "npm", "start:prod" ]
+FROM node:18-slim
 
-EXPOSE 8000
+WORKDIR /usr/src/app
+
+COPY --from=build /usr/src/app/dist ./dist
+
+COPY --from=build /usr/src/app/node_modules ./node_modules
+
+ENV NODE_ENV=production
+
+CMD [ "npm", "run", "start:prod" ]
