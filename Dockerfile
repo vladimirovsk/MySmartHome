@@ -7,7 +7,7 @@ COPY package.json /app/package.json
 RUN npm install
 
 # Add the files to arm image
-FROM arm64v8/alpine
+FROM arm64v8/node
 RUN mkdir /app
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
