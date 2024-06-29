@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Build docker
-        run: docker build . -t vladimirovsk/smarthome
+        run: docker build --platform linux/arm64 -t vladimirovsk/smarthome
       - name: Publish to Docker
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}

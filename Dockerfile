@@ -1,14 +1,13 @@
 FROM node:18.19-alpine
 
-RUN mkdir -p /usr/src/app
-
 WORKDIR /usr/src/app
 
-COPY . /usr/src/app
+COPY package*.json ./
 
 RUN npm install
+
+COPY . .
 
 RUN npm run build
 
 EXPOSE 8000
-
