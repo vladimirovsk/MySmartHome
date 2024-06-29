@@ -21,17 +21,29 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
       - name: Login in Docker Hub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build docker
-        run: docker build . --platform linux/arm64 -t vladimirovsk/smarthome
-      - name: Publish to Docker
-        run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push vladimirovsk/smarthome
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/arm64
+          push: true
+          tags: vladimirovsk/smarthome:latest
+#      - name: Build docker
+#        run: docker build . --platform linux/arm64 -t vladimirovsk/smarthome
+#      - name: Publish to Docker
+#        run: |
+#          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+#          docker push vladimirovsk/smarthome
 ################################################################
 #I commented out this step because a real deploy to the server is not needed at this stage          
 #  deploy:
