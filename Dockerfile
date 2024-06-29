@@ -1,6 +1,7 @@
-FROM arm64v8/node:latest
+FROM node:18.19-alpine
 
 RUN mkdir -p /usr/src/app
+
 WORKDIR /usr/src/app
 
 COPY . /usr/src/app
